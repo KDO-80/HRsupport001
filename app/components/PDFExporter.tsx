@@ -23,9 +23,9 @@ export function PDFExporter({ type, contentId }: PDFExporterProps) {
       const opt = {
         margin: 10,
         filename: `${type}-report-${new Date().toISOString().split('T')[0]}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
+        image: { type: 'png' as const, quality: 0.98 },
         html2canvas: { scale: 2 },
-        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+        jsPDF: { orientation: 'portrait' as const, unit: 'mm', format: 'a4' }
       }
 
       html2pdf().set(opt).from(element).save()

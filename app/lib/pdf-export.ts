@@ -11,9 +11,9 @@ export async function exportToPDF(elementId: string, filename: string) {
     const opt = {
       margin: 10,
       filename: `${filename}-${new Date().toISOString().split('T')[0]}.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
+      image: { type: 'png' as const, quality: 0.98 },
       html2canvas: { scale: 2, logging: false },
-      jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+      jsPDF: { orientation: 'portrait' as const, unit: 'mm', format: 'a4' }
     }
 
     await html2pdf().set(opt).from(element).save()
